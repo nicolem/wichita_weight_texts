@@ -4,21 +4,21 @@
   <thead>
     <tr>
       <th></th>
-      <th>User Phone</th>
-      <th>Active</th>
-      <th>Next Message</th>
+      <th>User Phone &emsp;</th>
+      <th>&emsp;Active &emsp;</th>
+      <th>Next Message &emsp;</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><h4><%= user.id %>. </h4> </td>
+        <td><h4><%= user.id %>.&emsp;</h4> </td>
         <td><h4><%= link_to user.phone, user %></h4></td>
         <td><h5><%= user.active? ? "True" : "False" %></h5></td>
         <td><h5><%= user.next_message %></h5></td>
         <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_user_path(user), :class => 'btn btn-default btn-xs' %> </td>
+              edit_user_path(user), :class => 'btn btn-default btn-xs' %>&emsp; </td>
 <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               user_path(user),
               :method => 'delete',
