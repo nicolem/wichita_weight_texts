@@ -10,6 +10,7 @@ namespace :push_messages do
         u.sendmessage
         u.next_message = u.next_message + 1
         u.save!
+        
       end
     end
   end
