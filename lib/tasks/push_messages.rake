@@ -10,6 +10,11 @@ namespace :push_messages do
         u.sendmessage
         u.next_message = u.next_message + 1
         u.save!
+        if(u.next_message>=31){
+          u.active = false
+          u.save!
+          u.sendlastmessage
+        }
         
       end
     end
