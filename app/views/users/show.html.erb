@@ -24,8 +24,8 @@
     </thead>
     <tbody>
     <% @histories.each do |history| %>
-      <tr class= <%=history.category%> >
-  <td><%= history.message %> </td>
+      <tr class = "info">
+        <td><%= history.message %> </td>
         <td><%= ((history.created_at).localtime).strftime("%I:%M%p on  %b. %d, %Y") %></td>
       </tr>
     <% end %>
