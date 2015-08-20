@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   def sendmessage
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    time_str = ((self.time).localtime).strftime("%I:%M%p")
     text_str = Message.find(self.next_message)
     message = @client.account.messages.create(
       :from => @twilio_number,
@@ -23,5 +22,5 @@ class User < ActiveRecord::Base
     time
   end
 
-  handle_asynchronously :sendmessage, :run_at => Proc.new { |i| i.when_to_run }
+#   handle_asynchronously :sendmessage
 end
