@@ -32,6 +32,45 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Twilio
+gem 'twilio-ruby'
+
+# Use bootstrap themes
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+gem 'bootstrap-sass',       '3.2.0.0'
+
+gem 'node'
+gem 'therubyracer'
+gem "less-rails"
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+
+# Need daemons to start delayed_job
+gem 'daemons'
+
+# Use workless to use less workers on heroku
+gem 'workless', '~> 1.2.2'
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
+
+# use devise for users
+gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
+
+#use phony for phone formatting
+gem 'phony_rails'
+
+# Use Unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
+# use pagination for fanciness
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
