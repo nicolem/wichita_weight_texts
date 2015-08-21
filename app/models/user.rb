@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base
   has_many :histories
+  require 'phony'
+  def convert_to_e164(raw_phone)
+    Phony.format(
+        raw_phone,
+        :format => :international,
+        :spaces => ''
+    ).gsub(/\s+/, "") # Phony won't remove all spaces
+  end
   
   def sendmessage
     @twilio_number = ENV['TWILIO_NUMBER']
@@ -31,6 +39,12 @@ class User < ActiveRecord::Base
     #add reminder sent time to history
     note = History.new(:user_id => self.id, :message => "Study completed ")
     note.save
+    
+    message = @client.account.messages.create(
+      :from => @twilio_number,
+      :to => ENV['RESEARCHER_PHONE'],
+      :body => "Research subject ##{user.id} has completed the study",
+    )
   end
 
   def when_to_run

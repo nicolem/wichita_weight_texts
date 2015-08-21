@@ -10,9 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <%= f.text_area :text %>
+  <%= f.text_field :text, :class => "form-control" %>
 
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

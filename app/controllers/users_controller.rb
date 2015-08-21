@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @histories = @user.histories.order(time: :DESC)
+    @histories = @user.histories.order(created_at: :DESC)
   end
 
   # GET /users/new
