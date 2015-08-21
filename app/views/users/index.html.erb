@@ -16,7 +16,7 @@
         <td><h4><%= user.id %>.&emsp;</h4> </td>
         <td><h4><%= link_to user.phone, user %></h4></td>
         <td><h5><%= user.active? ? "True" : "False" %></h5></td>
-        <td><h5><%= number_to_percentage((user.next_message - 1) / 30, precision: 0) %> </h5></td>
+        <td><h5><%= number_to_percentage((user.next_message - 1) / 0.3, precision: 0) %> </h5></td>
         <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_user_path(user), :class => 'btn btn-default btn-xs' %>&emsp; </td>
         <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
