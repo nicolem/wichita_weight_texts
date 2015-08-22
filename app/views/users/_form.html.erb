@@ -18,11 +18,11 @@
   <div class="field" >
     <span style="float: left" >
     <%= f.label :active %>: 
-    <%= f.check_box :active, {checked: true}, "true", "false" %>
+    <%= f.check_box :active, {checked: true} %>
     </span>
     <span style="float: right" >
     <%= f.label :next_message %> :
-    <%= f.select :next_message, options_for_select(1..30), :class => "form-control" %>
+    <%= f.collection_select :next_message, Message.select("id").order("id"), :id, :id, :class => "form-control" %>
     </span>
   </div>
 
