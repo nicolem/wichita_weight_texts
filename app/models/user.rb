@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     message = @client.account.messages.create(
       :from => @twilio_number,
       :to => ENV['RESEARCHER_PHONE'],
-      :body => "Research subject ##{user.id} has completed the study",
+      :body => "Research subject ##{self.id} has completed the study",
     )
   end
 
