@@ -1,5 +1,7 @@
-<h2>Users</h2>
-
+<h2>Users
+&emsp;
+<%= link_to 'New User', new_user_path, :class => 'btn btn-info btn-xs' %>
+</h2>
 <table>
   <thead>
     <tr>
@@ -16,8 +18,8 @@
         <td><h4><%= user.id %>.&emsp;</h4> </td>
         <td><h4><%= link_to user.phone, user %></h4></td>
         <td><h5><%= user.active? ? "True" : "False" %></h5></td>
-        <td><h5><%= number_to_percentage((user.next_message - 1) / 0.3, precision: 0) %> </h5></td>
-        <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+        <td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow= <%=(user.next_message - 1) / 0.3 %>  aria-valuemin="0" aria-valuemax="30" style="width:<%= number_to_percentage((user.next_message - 1) / 0.3, precision: 0) %>"><%= number_to_percentage((user.next_message - 1) / 0.3, precision: 0) %> </div></div></td>
+        <td>&emsp;<%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_user_path(user), :class => 'btn btn-default btn-xs' %>&emsp; </td>
         <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               user_path(user),
@@ -30,5 +32,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
