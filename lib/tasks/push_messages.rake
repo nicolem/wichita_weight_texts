@@ -1,8 +1,8 @@
 namespace :push_messages do
   desc "move to next message"
   task :pm => :environment do
-    t = Date.now
-    if !t.saturday && !t.sunday
+    t = Time.now
+    if !t.saturday? && !t.sunday?
     # grab all users
       users = User.all
       # send messages to users
