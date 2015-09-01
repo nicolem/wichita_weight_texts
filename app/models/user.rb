@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :histories
+  has_many :histories, dependent: :destroy
   require 'phony'
   def convert_to_e164(raw_phone)
     Phony.format(
@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
   def sendmessage
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    text_str = Message.find(self.next_message).text
+    if self.language == "English"
+      text_str = Message.find(self.next_message).text
+    else
+      text_str = SpanishMessage.find(self.next_message).text
+    end
     message = @client.account.messages.create(
       :from => @twilio_number,
       :to => self.phone,
@@ -28,7 +32,11 @@ class User < ActiveRecord::Base
   def sendlastmessage
     @twilio_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    text_str = "You have completed the study"
+    if self.language == "English"
+      text_str = "You have completed the study"
+    else
+      text_str = "Ha completado el estudio"
+    end
     message = @client.account.messages.create(
       :from => @twilio_number,
       :to => self.phone,
