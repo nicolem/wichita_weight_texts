@@ -20,6 +20,10 @@
     <%= f.label :active %>: 
     <%= f.check_box :active, {checked: true} %>
     </span>
+    <span style="float: left" >
+    <%= f.label :language %>:
+    <%= f.select :language, ["English", "Spanish"] %>
+    </span>
     <span style="float: right" >
     <%= f.label :next_message %> :
     <%= f.collection_select :next_message, Message.select("id").order("id"), :id, :id, :class => "form-control" %>

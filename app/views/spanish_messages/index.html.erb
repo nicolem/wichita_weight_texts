@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Spanish Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spanish_messages.each do |message| %>
+      <tr>
+        <td><p><%= message.id %>.&emsp; </p></td>
+        <td><p><%= message.text %></p></td>        
+        <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_spanish_message_path(message), :class => 'btn btn-default btn-xs' %></td>
+        <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              spanish_message_path(message),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spanish message', new_spanish_message_path %>
