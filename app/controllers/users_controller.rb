@@ -65,6 +65,25 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def reply
+    logger.debug "inside reply function"
+    sender = params[:From]
+    user = User.find_by(:phone => sender)
+    response = Twilio::TwiML::Response.new do |r|
+      if user.nil?
+        r.Message "Thank you for participating in research, but this account is not monitored for replies.  Please contact the researcher if you have any questions."
+      else 
+        if user.language == English
+          r.Message "Thank you for participating in research, but this account is not monitored for replies.  Please contact the researcher if you have any questions."
+        else
+          r.Message "Gracias por participar en la investigacion, pero esta cuenta no se supervisa para las respuestas . Por favor, pongase en contacto con el investigador si tiene alguna pregunta ."
+        end
+      end
+      
+    end
+    render_twiml response
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
