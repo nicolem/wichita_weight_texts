@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       if user.nil?
         r.Message "Thank you for participating in research, but this account is not monitored for replies.  Please contact the researcher if you have any questions."
       else 
-        if user.language == English
+        if user.language == "English"
           r.Message "Thank you for participating in research, but this account is not monitored for replies.  Please contact the researcher if you have any questions."
         else
           r.Message "Gracias por participar en la investigacion, pero esta cuenta no se supervisa para las respuestas . Por favor, pongase en contacto con el investigador si tiene alguna pregunta ."
